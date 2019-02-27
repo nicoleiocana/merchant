@@ -55,14 +55,6 @@ class OrderItemsController < ApplicationController
     def set_order_item
       @order_item = OrderItem.find(params[:id])
     end
-    
-    def load_order
-      @order = Order.find_or_initialize_by(id: session[:order_id])
-      if @order.new_record?
-        @order.save!
-        session[:order_id] = @order.id
-      end
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_item_params
